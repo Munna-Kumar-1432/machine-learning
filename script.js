@@ -20,9 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. Training Chart Initialization
-    const ctx = document.getElementById('trainingChart').getContext('2d');
-    
-    // Initial static data
+    const chartElement = document.getElementById('trainingChart');
+    if (chartElement) {
+        const ctx = chartElement.getContext('2d');
+        
+        // Initial static data
     const labels = Array.from({length: 15}, (_, i) => `E${i+1}`);
     const lossData = [0.95, 0.8, 0.65, 0.5, 0.42, 0.35, 0.28, 0.22, 0.18, 0.15, 0.12, 0.1, 0.08, 0.07, 0.06];
     const accData = [0.2, 0.35, 0.5, 0.62, 0.7, 0.78, 0.83, 0.88, 0.91, 0.93, 0.95, 0.96, 0.97, 0.98, 0.99];
@@ -74,17 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Simulation Buttons
-    window.simulateTraining = () => {
-        // Add random slight "jitter" to the training curve to make it look realistic
-        trainingChart.data.datasets[0].data = trainingChart.data.datasets[0].data.map(v => Math.max(0.01, v * (0.85 + Math.random() * 0.1)));
-        trainingChart.data.datasets[1].data = trainingChart.data.datasets[1].data.map(v => Math.min(1.0, v * (1.02 + Math.random() * 0.05)));
-        trainingChart.update('active');
-    };
-
-    window.resetPlot = () => {
-        trainingChart.data.datasets[0].data = [0.95, 0.8, 0.65, 0.5, 0.42, 0.35, 0.28, 0.22, 0.18, 0.15, 0.12, 0.1, 0.08, 0.07, 0.06];
-        trainingChart.data.datasets[1].data = [0.2, 0.35, 0.5, 0.62, 0.7, 0.78, 0.83, 0.88, 0.91, 0.93, 0.95, 0.96, 0.97, 0.98, 0.99];
-        trainingChart.update();
-    };
+        // Simulation Buttons
+        window.simulateTraining = () => {
+            // Add random slight "jitter" to the training curve to make it look realistic
+            trainingChart.data.datasets[0].data = trainingChart.data.datasets[0].data.map(v => Math.max(0.01, v * (0.85 + Math.random() * 0.1)));
+            trainingChart.data.datasets[1].data = trainingChart.data.datasets[1].data.map(v => Math.min(1.0, v * (1.02 + Math.random() * 0.05)));
+            trainingChart.update('active');
+        };
+    
+        window.resetPlot = () => {
+            trainingChart.data.datasets[0].data = [0.95, 0.8, 0.65, 0.5, 0.42, 0.35, 0.28, 0.22, 0.18, 0.15, 0.12, 0.1, 0.08, 0.07, 0.06];
+            trainingChart.data.datasets[1].data = [0.2, 0.35, 0.5, 0.62, 0.7, 0.78, 0.83, 0.88, 0.91, 0.93, 0.95, 0.96, 0.97, 0.98, 0.99];
+            trainingChart.update();
+        };
+    }
 });

@@ -70,13 +70,15 @@
                 <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center">
                     <i class="fas fa-brain text-white text-sm"></i>
                 </div>
-                <span class="font-grotesk font-bold text-xl tracking-tight text-white">AI Academy</span>
+                <span class="font-grotesk font-bold text-xl tracking-tight text-white">Machine Learning</span>
             </div>
-            <div class="hidden md:flex gap-8 items-center text-sm font-medium">
+            <div class="hidden lg:flex gap-8 items-center text-sm font-medium">
                 <a href="#basics" class="hover:text-brand-cyan transition-colors">Start Here</a>
                 <a href="#algorithms" class="hover:text-brand-cyan transition-colors">Algorithms</a>
+                <a href="#metrics" class="hover:text-brand-cyan transition-colors">Metrics</a>
                 <a href="#live-demo" class="hover:text-brand-cyan transition-colors">Visualizer</a>
-                <a href="#" class="bg-white text-brand-dark px-5 py-2 rounded-full font-bold hover:bg-brand-blue hover:text-white transition-all">Enroll Free</a>
+                <a href="#roadmap" class="hover:text-brand-cyan transition-colors">Roadmap</a>
+                <a href="#enrollment" class="bg-white text-brand-dark px-5 py-2 rounded-full font-bold hover:bg-brand-blue hover:text-white transition-all">Enroll Free</a>
             </div>
         </div>
     </nav>
@@ -102,7 +104,30 @@
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 bg-brand-blue/20 blur-3xl rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1600" alt="AI Neural" class="relative rounded-3xl border border-white/10 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600&auto=format&fit=crop" alt="AI Neural" class="relative rounded-3xl border border-white/10 shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Simulation Section -->
+    <section id="live-demo" class="py-32 bg-brand-dark">
+        <div class="container mx-auto px-6">
+            <div class="glass-card p-12 lg:p-20 rounded-[4rem] border-brand-blue/10 overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <h6 class="text-brand-cyan font-bold tracking-[0.2em] uppercase mb-4 text-xs">interactive laboratory</h6>
+                        <h2 class="text-5xl font-grotesk font-bold text-white mb-8">Model <span class="text-gradient">Training Hub</span></h2>
+                        <p class="text-gray-400 mb-10 leading-relaxed">Watch how neural networks learn in real-time. This interactive plotter simulates prediction error (loss) and model confidence (accuracy) across training epochs.</p>
+                        
+                        <div class="flex gap-4">
+                            <button onclick="simulateTraining()" class="px-8 py-4 bg-brand-blue hover:bg-blue-600 rounded-xl font-bold transition-all shadow-lg shadow-brand-blue/20">Start Simulation</button>
+                            <button onclick="resetPlot()" class="px-8 py-4 glass-card rounded-xl font-bold transition-all">Reset Model</button>
+                        </div>
+                    </div>
+                    <div class="h-[400px] relative bg-brand-dark/50 rounded-3xl p-6 border border-white/5">
+                        <canvas id="trainingChart"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -558,6 +583,10 @@
                 <p class="text-gray-400 max-w-2xl mx-auto">From spatial patterns to sequential flows, explore the blueprints of modern AI.</p>
             </div>
 
+            <div class="mb-20">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop" class="w-full h-[400px] object-cover rounded-[3rem] border border-white/5 opacity-60" alt="Neural Network Nodes">
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- CNN -->
                 <div class="glass-card p-10 rounded-[3rem] border-white/5 reveal-on-scroll">
@@ -613,8 +642,13 @@
     <!-- The Metrics Lab (Model Evaluation) -->
     <section id="metrics" class="py-32 bg-brand-surface/20">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-grotesk font-bold text-white text-center mb-20 text-gradient">The Evaluation Metrics Lab</h2>
+            <h2 class="text-4xl font-grotesk font-bold text-white text-center mb-10 text-gradient">The Evaluation Metrics Lab</h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-20 text-sm">Quantifying intelligence requires precise metrics. We don't just look at accuracy; we analyze precision, recall, and error sensitivity.</p>
             
+            <div class="mb-20">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" class="w-full h-[400px] object-cover rounded-[3rem] border border-white/5 shadow-2xl opacity-80" alt="Data Analytics">
+            </div>
+
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Classification Metrics -->
                 <div class="glass-card p-10 rounded-[3rem] border-white/5 reveal-on-scroll">
@@ -760,6 +794,10 @@
                 <a href="#" class="text-brand-cyan font-bold flex items-center gap-2 hover:translate-x-2 transition-all">View 50+ Case Studies <i class="fas fa-arrow-right"></i></a>
             </div>
             
+            <div class="mb-20">
+                <img src="https://images.unsplash.com/photo-1593349480506-8433634cdcbe?q=80&w=2000&auto=format&fit=crop" class="w-full h-[450px] object-cover rounded-[4rem] border border-white/5 grayscale hover:grayscale-0 transition-all duration-1000" alt="AI Industry Application">
+            </div>
+
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Case 1: Healthcare -->
                 <div class="group reveal-on-scroll">
@@ -2127,6 +2165,31 @@ model.fit(train_data, epochs=10, batch_size=32)</pre>
         </div>
     </section>
 
+    <!-- Global Community & Enrollment Section -->
+    <section id="enrollment" class="py-40 bg-brand-dark relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-blue/10 blur-[150px] rounded-full"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h6 class="text-brand-cyan font-bold tracking-[0.4em] uppercase mb-8 text-xs">Ready to begin?</h6>
+            <h2 class="text-6xl font-grotesk font-bold text-white mb-10 leading-tight">Join the <span class="text-gradient">Next Wave</span> of AI Pioneers.</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-16 text-lg">Whether you're a beginner or a seasoned dev, our Masterclass provides the depth and mathematical rigor needed to dominate the field of Machine Learning.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 items-center">
+                <div class="flex -space-x-4 mb-6 md:mb-0">
+                    <img src="https://i.pravatar.cc/150?u=a1" class="w-12 h-12 rounded-full border-4 border-brand-dark">
+                    <img src="https://i.pravatar.cc/150?u=a2" class="w-12 h-12 rounded-full border-4 border-brand-dark">
+                    <img src="https://i.pravatar.cc/150?u=a3" class="w-12 h-12 rounded-full border-4 border-brand-dark">
+                    <div class="w-12 h-12 rounded-full bg-brand-blue border-4 border-brand-dark flex items-center justify-center text-[10px] font-bold">+15k</div>
+                </div>
+                <p class="text-sm text-gray-500 font-medium">Join 15,000+ students already mastering ML.</p>
+            </div>
+
+            <div class="mt-20 flex flex-wrap justify-center gap-6">
+                <a href="#" class="px-12 py-6 bg-white text-brand-dark rounded-2xl font-bold text-lg hover:bg-brand-blue hover:text-white transition-all shadow-2xl shadow-white/5">Enroll in Masterclass</a>
+                <a href="#" class="px-12 py-6 glass-card rounded-2xl font-bold text-lg hover:border-brand-cyan transition-all">Download Syllabus</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-20 border-t border-white/5 bg-brand-dark">
         <div class="container mx-auto px-6 text-center">
@@ -2138,7 +2201,7 @@ model.fit(train_data, epochs=10, batch_size=32)</pre>
             </div>
             <p class="text-gray-500 text-sm mb-10">Simplifying Machine Learning for a Smarter Tomorrow.</p>
             
-            <div class="flex justify-center gap-12 text-xs font-bold text-gray-700 uppercase tracking-widest mb-16">
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 text-xs font-bold text-gray-700 uppercase tracking-widest mb-16">
                 <a href="#algorithms" class="hover:text-brand-blue transition-all">Algorithm Stack</a>
                 <a href="#mlops" class="hover:text-brand-blue transition-all">Operations</a>
                 <a href="#scenarios" class="hover:text-brand-blue transition-all">Case Studies</a>
@@ -2153,8 +2216,11 @@ model.fit(train_data, epochs=10, batch_size=32)</pre>
             </div>
             
             <div class="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-800">
-                &copy; 2026 ML-MASTERY | MUNNA KUMAR | DESIGNED FOR THE FUTURE
+                &copy; 2026 ML-MASTERY | MUNNA KUMAR | DESIGNED BY ANTIGRAVITY AI
             </div>
         </div>
     </footer>
 
+    <script src="script.js"></script>
+</body>
+</html>
